@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RestTodo.Configurations;
 using RestTodo.Data;
 
 namespace RestTodo
@@ -20,6 +21,7 @@ namespace RestTodo
         {
             services.AddDbContext<CsharpTodoDb>(builder =>
                 builder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddRepositories();
             services.AddMvc();
         }
 
