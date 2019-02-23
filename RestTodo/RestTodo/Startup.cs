@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RestTodo.Data;
 
 namespace RestTodo
 {
@@ -32,7 +33,7 @@ namespace RestTodo
         public void ConfigureProductionServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddDbContext<CsharpTodo>(options =>
+            services.AddDbContext<CsharpTodoDb>(options =>
             options.UseSqlServer(Configuration["CsharpTodo"]));
         }
 
