@@ -45,10 +45,11 @@ namespace RestTodo.Services
             repository.Save(mapper.Map<Todo>(dto));
         }
 
-        public void Update(TodoDto dto)
+        public void Update(TodoDto dto, long id)
         {
-            var updatedTodo = mapper.Map<TodoDto, Todo>(dto, repository.GetById(dto.Id));
-            repository.Save(updatedTodo);
+            var todoToUpdate = repository.GetById(id);
+            var updatedTodo = mapper.Map<TodoDto, Todo>(dto, todoToUpdate);
+            repository.Update(updatedTodo);
         }
     }
 }

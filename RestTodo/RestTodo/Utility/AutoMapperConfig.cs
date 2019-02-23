@@ -11,7 +11,8 @@ namespace RestTodo.Utility
     {
         public AutoMapperConfig()
         {
-            CreateMap<Todo, TodoDto>().ReverseMap();
+            CreateMap<Todo, TodoDto>()
+                .ReverseMap();
         }
     }
 }

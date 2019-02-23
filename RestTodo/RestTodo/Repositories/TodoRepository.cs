@@ -41,5 +41,11 @@ namespace RestTodo.Repositories
         {
             return context.Todos.Any(todo => todo.Id == id) ? true : false;
         }
+
+        public void Update(Todo entity)
+        {
+            context.Update(entity);
+            context.SaveChanges();
+        }
     }
 }

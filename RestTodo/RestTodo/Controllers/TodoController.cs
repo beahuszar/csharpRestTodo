@@ -43,7 +43,20 @@ namespace RestTodo.Controllers
         [HttpGet("{id}")]
         public IActionResult GetTodoById(long id)
         {
-           return service.IsInDataBase(id) ? Ok(service.GetById(id)) : StatusCode(404, new ErrorMessage("Todo not found"));
+            return service.IsInDataBase(id) ? Ok(service.GetById(id)) : StatusCode(404, new ErrorMessage("Todo not found"));
+        }
+
+        [HttpPut("/edit/{id}")]
+        [Consumes("application/json")]
+        public IActionResult UpdateTodo(TodoDto dto, long id)
+        {
+            if (service.IsInDataBase(id))
+            {
+                service.Update(dto, id);
+                return StatusCode(201, new ResponseMessage("Updated"));
+            }
+
+            return StatusCode(404, new ErrorMessage("No such todo"));
         }
     }
 }

@@ -10,7 +10,7 @@ namespace RestTodo.Interfaces
         IEnumerable<U> GetAll();
         U GetById(long id);
         void Save(U dto);
-        void Update(U dto);
+        void Update(U dto, long id);
         void Delete(long id);
         bool IsInDataBase(long id);
     }

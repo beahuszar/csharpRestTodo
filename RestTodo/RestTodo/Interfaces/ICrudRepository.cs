@@ -12,5 +12,6 @@ namespace RestTodo.Interfaces
         void Save(T entity);
         void Delete(long id);
         bool IsInDataBase(long id);
+        void Update(T entity);
     }
 }
