@@ -11,22 +11,16 @@ namespace RestTodo
     {
         public IConfiguration Configuration { get; }
 
-        public Startup(IHostingEnvironment env)
+        public Startup(IConfiguration configuration)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables();
-
-            Configuration = builder.Build();
+            Configuration = configuration;
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<CsharpTodoDb>(builder =>
+                builder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc();
-            services.AddDbContext<CsharpTodoDb>(options =>
-            options.UseSqlServer(Configuration["CsharpTodo"]));
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
