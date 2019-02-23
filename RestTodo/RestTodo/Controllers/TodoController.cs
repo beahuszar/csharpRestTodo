@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RestTodo.Extenstions;
 using RestTodo.Models;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,16 @@ namespace RestTodo.Controllers
             return Ok(new Todo());
         }
 
-        
+        [HttpPost("new")]
+        public IActionResult AddNewTodo(Todo todo)
+        {
+            if (todo.IsAnyPropertyNull() || todo.IsAnyStringPropertyEmpty())
+            {
+                return StatusCode(400, new ErrorMessage("Please provide all fields"));
+            }
+
+            return StatusCode(201, new ErrorMessage("success");
+        }
 
     }
 }
