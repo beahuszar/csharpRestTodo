@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RestTodo.Configurations;
 using RestTodo.Data;
+using RestTodo.Utility;
 
 namespace RestTodo
 {
@@ -22,6 +23,9 @@ namespace RestTodo
             services.AddDbContext<CsharpTodoDb>(builder =>
                 builder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddRepositories();
+
+            var configuredMapper = new AutoMapper.MapperConfiguration(c => c.AddProfile(new AutoMapperConfig())).CreateMapper();
+            services.AddSingleton(configuredMapper);
             services.AddMvc();
         }
 
