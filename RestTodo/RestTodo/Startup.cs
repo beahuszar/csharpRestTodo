@@ -22,7 +22,6 @@ namespace RestTodo
             Configuration = builder.Build();
         }
 
-
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
