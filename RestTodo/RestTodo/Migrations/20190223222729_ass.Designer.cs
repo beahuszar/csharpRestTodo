@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestTodo.Data;
 
 namespace RestTodo.Migrations
 {
     [DbContext(typeof(CsharpTodoDb))]
-    partial class CsharpTodoDbModelSnapshot : ModelSnapshot
+    [Migration("20190223222729_ass")]
+    partial class ass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

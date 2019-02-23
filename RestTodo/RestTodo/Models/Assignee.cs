@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace RestTodo.Models
 {
-    public class Todo
+    public class Assignee
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
-        public string Title { get; set; }
-        public bool IsUrgent { get; set; }
-        public bool IsDone { get; set; }
-        public Assignee assignee { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public List<Todo> Todos { get; set; }
     }
 }
