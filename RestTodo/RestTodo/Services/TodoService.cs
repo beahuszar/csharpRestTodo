@@ -35,6 +35,11 @@ namespace RestTodo.Services
             return mapper.Map<TodoDto>(repository.GetById(id));
         }
 
+        public bool IsInDataBase(long id)
+        {
+            return repository.IsInDataBase(id);
+        }
+
         public void Save(TodoDto dto)
         {
             repository.Save(mapper.Map<Todo>(dto));

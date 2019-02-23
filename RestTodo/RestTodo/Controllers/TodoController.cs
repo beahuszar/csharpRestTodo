@@ -39,5 +39,11 @@ namespace RestTodo.Controllers
         {
             return Ok(service.GetAll());
         }
+
+        [HttpGet("{id}")]
+        public IActionResult GetTodoById(long id)
+        {
+           return service.IsInDataBase(id) ? Ok(service.GetById(id)) : StatusCode(404, new ErrorMessage("Todo not found"));
+        }
     }
 }

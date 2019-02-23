@@ -3,6 +3,7 @@ using RestTodo.Interfaces;
 using RestTodo.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RestTodo.Repositories
 {
@@ -34,6 +35,11 @@ namespace RestTodo.Repositories
         {
             context.Todos.Add(entity);
             context.SaveChanges();
+        }
+
+        public bool IsInDataBase(long id)
+        {
+            return context.Todos.Any(todo => todo.Id == id) ? true : false;
         }
     }
 }

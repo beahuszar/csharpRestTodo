@@ -12,5 +12,6 @@ namespace RestTodo.Interfaces
         void Save(U dto);
         void Update(U dto);
         void Delete(long id);
+        bool IsInDataBase(long id);
     }
 }
