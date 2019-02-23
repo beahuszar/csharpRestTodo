@@ -55,7 +55,17 @@ namespace RestTodo.Controllers
                 service.Update(dto, id);
                 return StatusCode(201, new ResponseMessage("Updated"));
             }
+            return StatusCode(404, new ErrorMessage("No such todo"));
+        }
 
+        [HttpDelete("delete/{id}")]
+        public IActionResult DeleteTodo(long id)
+        {
+            if (service.IsInDataBase(id))
+            {
+                service.Delete(id);
+                return Ok();
+            }
             return StatusCode(404, new ErrorMessage("No such todo"));
         }
     }

@@ -19,6 +19,7 @@ namespace RestTodo.Repositories
         public void Delete(long id)
         {
             context.Todos.Remove(GetById(id));
+            context.SaveChanges();
         }
 
         public IEnumerable<Todo> GetAll()
