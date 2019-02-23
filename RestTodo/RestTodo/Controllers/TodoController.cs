@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RestTodo.Extenstions;
 using RestTodo.Models;
+using RestTodo.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,14 +20,15 @@ namespace RestTodo.Controllers
         }
 
         [HttpPost("new")]
-        public IActionResult AddNewTodo(Todo todo)
+        [Consumes("application/json")]
+        public IActionResult AddNewTodo(PostTodo postTodo)
         {
-            if (todo.IsAnyPropertyNull() || todo.IsAnyStringPropertyEmpty())
+            if (postTodo.IsAnyPropertyNull() || postTodo.IsAnyStringPropertyEmpty())
             {
                 return StatusCode(400, new ErrorMessage("Please provide all fields"));
             }
 
-            return StatusCode(201, new ErrorMessage("success");
+            return StatusCode(201, new ErrorMessage("success"));
         }
 
     }
