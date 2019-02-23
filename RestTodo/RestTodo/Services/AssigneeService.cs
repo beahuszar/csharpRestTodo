@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using RestTodo.DTOs;
 using RestTodo.Interfaces;
 using RestTodo.Models;
 using System;
@@ -26,27 +27,27 @@ namespace RestTodo.Services
 
         public IEnumerable<AssigneeDto> GetAll()
         {
-            return mapper.Map repository.GetAll();
+            return mapper.Map<IEnumerable<AssigneeDto>>(GetAll());
         }
 
         public AssigneeDto GetById(long id)
         {
-            throw new NotImplementedException();
+            return mapper.Map<AssigneeDto>(GetById(id));
         }
 
         public bool IsInDataBase(long id)
         {
-            throw new NotImplementedException();
+            return repository.IsInDataBase(id);
         }
 
         public void Save(AssigneeDto dto)
         {
-            throw new NotImplementedException();
+            repository.Save(mapper.Map<Assignee>(dto));
         }
 
         public void Update(AssigneeDto dto, long id)
         {
-            throw new NotImplementedException();
+            repository.Update(mapper.Map<AssigneeDto, Assignee>(dto, repository.GetById(id)));
         }
     }
 }
