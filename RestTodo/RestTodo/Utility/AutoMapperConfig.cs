@@ -13,6 +13,8 @@ namespace RestTodo.Utility
         {
             CreateMap<Todo, TodoDto>()
                 .ReverseMap();
+            CreateMap<Assignee, AssigneeDto>()
+                .ReverseMap();
         }
     }
 }
