@@ -27,12 +27,12 @@ namespace RestTodo.Services
 
         public IEnumerable<AssigneeDto> GetAll()
         {
-            return mapper.Map<IEnumerable<AssigneeDto>>(GetAll());
+            return mapper.Map<IEnumerable<AssigneeDto>>(repository.GetAll());
         }
 
         public AssigneeDto GetById(long id)
         {
-            return mapper.Map<AssigneeDto>(GetById(id));
+            return mapper.Map<AssigneeDto>(repository.GetById(id));
         }
 
         public bool IsInDataBase(long id)

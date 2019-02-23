@@ -2,7 +2,6 @@
 using RestTodo.DTOs;
 using RestTodo.Extenstions;
 using RestTodo.Interfaces;
-using RestTodo.Models;
 using RestTodo.Utility;
 using System;
 using System.Collections.Generic;
@@ -12,19 +11,19 @@ using System.Threading.Tasks;
 namespace RestTodo.Controllers
 {
     [ApiController]
-    [Route("todo")]
-    public class TodoController : Controller
+    [Route("ass")]
+    public class AssigneeController : Controller
     {
-        private readonly ICrudService<TodoDto> service;
+        private readonly ICrudService<AssigneeDto> service;
 
-        public TodoController(ICrudService<TodoDto> service)
+        public AssigneeController(ICrudService<AssigneeDto> service)
         {
             this.service = service;
         }
 
         [HttpPost("new")]
         [Consumes("application/json")]
-        public IActionResult CreateTodo(TodoDto dto)
+        public IActionResult CreateAssignee(AssigneeDto dto)
         {
             if (dto.IsAnyStringPropertyEmpty() || dto.IsAnyPropertyNull())
             {
@@ -35,31 +34,31 @@ namespace RestTodo.Controllers
         }
 
         [HttpGet("list")]
-        public IActionResult GetAllTodos()
+        public IActionResult GetAllAssignees()
         {
             return Ok(service.GetAll());
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetTodoById(long id)
+        public IActionResult GetAssigneeById(long id)
         {
-            return service.IsInDataBase(id) ? Ok(service.GetById(id)) : StatusCode(404, new ErrorMessage("Todo not found"));
+            return service.IsInDataBase(id) ? Ok(service.GetById(id)) : StatusCode(404, new ErrorMessage("Assignee not found"));
         }
 
         [HttpPut("edit/{id}")]
         [Consumes("application/json")]
-        public IActionResult UpdateTodo(TodoDto dto, long id)
+        public IActionResult UpdateTodo(AssigneeDto dto, long id)
         {
             if (service.IsInDataBase(id))
             {
                 service.Update(dto, id);
                 return StatusCode(201, new ResponseMessage("Updated"));
             }
-            return StatusCode(404, new ErrorMessage("No such todo"));
+            return StatusCode(404, new ErrorMessage("No such assignee"));
         }
 
         [HttpDelete("delete/{id}")]
-        public IActionResult DeleteTodo(long id)
+        public IActionResult DeleteAssignee(long id)
         {
             if (service.IsInDataBase(id))
             {
