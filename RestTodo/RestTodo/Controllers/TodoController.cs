@@ -8,13 +8,16 @@ using System.Threading.Tasks;
 namespace RestTodo.Controllers
 {
     [ApiController]
+    [Route("todo")]
     public class TodoController : Controller
     {
-        [HttpGet("todos")]
+        [HttpGet("list")]
         public IActionResult GetTodos()
         {
             return Ok(new Todo());
         }
+
+        
 
     }
 }
