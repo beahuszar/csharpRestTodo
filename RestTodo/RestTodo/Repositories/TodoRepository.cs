@@ -35,10 +35,5 @@ namespace RestTodo.Repositories
             context.Todos.Add(entity);
             context.SaveChanges();
         }
-
-        public void Update(Todo entity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

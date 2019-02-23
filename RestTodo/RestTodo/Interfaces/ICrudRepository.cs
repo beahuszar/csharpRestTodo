@@ -10,7 +10,6 @@ namespace RestTodo.Interfaces
         IEnumerable<T> GetAll();
         T GetById(long id);
         void Save(T entity);
-        void Update(T entity);
         void Delete(long id);
     }
 }
