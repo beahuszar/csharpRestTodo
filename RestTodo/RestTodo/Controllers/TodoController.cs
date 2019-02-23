@@ -16,20 +16,33 @@ namespace RestTodo.Controllers
         [HttpGet("list")]
         public IActionResult GetTodos()
         {
-            return Ok(new Todo());
+            
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetTodoById()
+        {
+           
         }
 
         [HttpPost("new")]
         [Consumes("application/json")]
         public IActionResult AddNewTodo(PostTodo postTodo)
         {
-            if (postTodo.IsAnyPropertyNull() || postTodo.IsAnyStringPropertyEmpty())
-            {
-                return StatusCode(400, new ErrorMessage("Please provide all fields"));
-            }
-
-            return StatusCode(201, new ErrorMessage("success"));
+            
         }
 
+        [HttpPut("edit/{id}")]
+        [Consumes("application/json")]
+        public IActionResult EditTodo()
+        {
+            
+        }
+
+        [HttpDelete("{id}/delete")]
+        public IActionResult DeleteTodo()
+        {
+            
+        }
     }
 }
