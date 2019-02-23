@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RestTodo.DTOs;
 using RestTodo.Extenstions;
+using RestTodo.Interfaces;
 using RestTodo.Models;
 using RestTodo.Utility;
 using System;
@@ -13,6 +15,29 @@ namespace RestTodo.Controllers
     [Route("todo")]
     public class TodoController : Controller
     {
-       
+        private readonly ICrudService<TodoDto> service;
+
+        public TodoController(ICrudService<TodoDto> service)
+        {
+            this.service = service;
+        }
+
+        [HttpPost("new")]
+        [Consumes("application/json")]
+        public IActionResult CreateTodo(TodoDto dto)
+        {
+            if (dto.IsAnyStringPropertyEmpty() || dto.IsAnyPropertyNull())
+            {
+                return StatusCode(400, new ErrorMessage("One or more fields are missing"));
+            }
+            service.Save(dto);
+            return StatusCode(201);
+        }
+
+        [HttpGet("list")]
+        public IActionResult GetAllTodos()
+        {
+            return Ok(service.GetAll());
+        }
     }
 }

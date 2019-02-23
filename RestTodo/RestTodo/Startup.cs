@@ -23,7 +23,7 @@ namespace RestTodo
             services.AddDbContext<CsharpTodoDb>(builder =>
                 builder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddRepositories();
-
+            services.AddServices();
             var configuredMapper = new AutoMapper.MapperConfiguration(c => c.AddProfile(new AutoMapperConfig())).CreateMapper();
             services.AddSingleton(configuredMapper);
             services.AddMvc();
