@@ -16,7 +16,7 @@ namespace RestTodo.Models
         public bool IsUrgent { get; set; }
         public bool IsDone { get; set; }
 
-        public long AssigneeId { get; set; }
+        public long? AssigneeId { get; set; }
         [ForeignKey("AssigneeId")]
         public Assignee Assignee { get; set; }
     }

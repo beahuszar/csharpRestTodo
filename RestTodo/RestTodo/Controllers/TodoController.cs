@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RestTodo.DTOs;
 using RestTodo.Extenstions;
 using RestTodo.Interfaces;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace RestTodo.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("todo")]
     public class TodoController : Controller
@@ -26,10 +28,10 @@ namespace RestTodo.Controllers
         [Consumes("application/json")]
         public IActionResult CreateTodo(TodoDto dto)
         {
-            if (dto.IsAnyStringPropertyEmpty() || dto.IsAnyPropertyNull())
+            /*if (dto.IsAnyStringPropertyEmpty() || dto.IsAnyPropertyNull())
             {
                 return StatusCode(400, new ErrorMessage("One or more fields are missing"));
-            }
+            }*/
             service.Save(dto);
             return StatusCode(201);
         }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RestTodo.DTOs;
 using RestTodo.Extenstions;
 using RestTodo.Interfaces;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace RestTodo.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("ass")]
     public class AssigneeController : Controller

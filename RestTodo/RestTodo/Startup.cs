@@ -20,6 +20,7 @@ namespace RestTodo
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuth(Configuration);
             services.AddDbContext<CsharpTodoDb>(builder =>
                 builder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddRepositories();
@@ -36,6 +37,7 @@ namespace RestTodo
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseAuthentication();
             app.UseMvc();
         }
     }

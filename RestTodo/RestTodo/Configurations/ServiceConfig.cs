@@ -15,6 +15,7 @@ namespace RestTodo.Configurations
         {
             services.AddScoped<ICrudService<TodoDto>, TodoService>();
             services.AddScoped<ICrudService<AssigneeDto>, AssigneeService>();
+            services.AddScoped<IAuthService, AuthService>();
         }
     }
 }

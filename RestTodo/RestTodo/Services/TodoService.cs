@@ -42,7 +42,9 @@ namespace RestTodo.Services
 
         public void Save(TodoDto dto)
         {
-            repository.Save(mapper.Map<Todo>(dto));
+            var newTodo = mapper.Map<Todo>(dto);
+            newTodo.Assignee = null;
+            repository.Save(newTodo);
         }
 
         public void Update(TodoDto dto, long id)
