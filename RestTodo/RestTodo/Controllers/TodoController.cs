@@ -1,14 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RestTodo.DTOs;
-using RestTodo.Extenstions;
 using RestTodo.Interfaces;
-using RestTodo.Models;
 using RestTodo.Utility;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RestTodo.Controllers
 {

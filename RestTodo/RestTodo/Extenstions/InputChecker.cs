@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace RestTodo.Extenstions
+﻿namespace RestTodo.Extenstions
 {
     public static class InputChecker
     {

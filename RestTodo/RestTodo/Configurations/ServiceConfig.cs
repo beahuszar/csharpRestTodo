@@ -2,10 +2,6 @@
 using RestTodo.DTOs;
 using RestTodo.Interfaces;
 using RestTodo.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RestTodo.Configurations
 {
