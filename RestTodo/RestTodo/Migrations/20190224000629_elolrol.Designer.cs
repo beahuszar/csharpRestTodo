@@ -9,8 +9,8 @@ using RestTodo.Data;
 namespace RestTodo.Migrations
 {
     [DbContext(typeof(CsharpTodoDb))]
-    [Migration("20190223193222_probe")]
-    partial class probe
+    [Migration("20190224000629_elolrol")]
+    partial class elolrol
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,6 +19,23 @@ namespace RestTodo.Migrations
                 .HasAnnotation("ProductVersion", "2.2.1-servicing-10028")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("RestTodo.Models.Assignee", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Assignees");
+                });
 
             modelBuilder.Entity("RestTodo.Models.Todo", b =>
                 {

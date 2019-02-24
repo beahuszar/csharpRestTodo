@@ -11,6 +11,6 @@ namespace RestTodo.DTOs
         public string Title { get; set; }
         public bool IsUrgent { get; set; }
         public bool IsDone { get; set; }
-        public AssigneeDto Assignee { get; set; }
+        public long AssigneeId { get; set; }
     }
 }

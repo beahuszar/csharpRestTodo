@@ -10,8 +10,8 @@ using RestTodo.Data;
 namespace RestTodo.Migrations
 {
     [DbContext(typeof(CsharpTodoDb))]
-    [Migration("20190223222729_ass")]
-    partial class ass
+    [Migration("20190224000829_connections")]
+    partial class connections
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,26 +44,26 @@ namespace RestTodo.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<long?>("AssigneeId");
+
                     b.Property<bool>("IsDone");
 
                     b.Property<bool>("IsUrgent");
 
                     b.Property<string>("Title");
 
-                    b.Property<long?>("assigneeId");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("assigneeId");
+                    b.HasIndex("AssigneeId");
 
                     b.ToTable("Todos");
                 });
 
             modelBuilder.Entity("RestTodo.Models.Todo", b =>
                 {
-                    b.HasOne("RestTodo.Models.Assignee", "assignee")
+                    b.HasOne("RestTodo.Models.Assignee", "Assignee")
                         .WithMany("Todos")
-                        .HasForeignKey("assigneeId");
+                        .HasForeignKey("AssigneeId");
                 });
 #pragma warning restore 612, 618
         }
